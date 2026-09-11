@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08070d">
+  <meta name="description" content="Enoch K — B.E. CSE (AI/ML) student, creator, storyteller and builder.">
+  <title>Enoch K — Creative Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Rethink+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#08070d;--surface:#111018;--surface-2:#171520;--text:#f7f3ff;--muted:#aaa5b7;
+      --line:rgba(255,255,255,.085);--purple:#9b6cff;--purple-2:#c8adff;--purple-3:#7042e8;
+      --max:1180px;--nav-h:58px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:95px}
+    body{margin:0;color:var(--text);background:radial-gradient(circle at 80% 8%,rgba(125,80,255,.16),transparent 28rem),radial-gradient(circle at 8% 45%,rgba(80,55,150,.10),transparent 28rem),var(--bg);font-family:"Rethink Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");z-index:30}
+    body::after{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(380px circle at var(--mx,50%) var(--my,30%),rgba(155,108,255,.075),transparent 70%);z-index:-1}
+    a{color:inherit;text-decoration:none}button,input,textarea{font:inherit}.container{width:min(var(--max),calc(100% - 40px));margin:auto}
+
+    /* Navigation: deliberately borderless at the top, then becomes a subtle glass pill while scrolling. */
+    .nav{position:sticky;top:14px;z-index:20;margin-top:14px;height:var(--nav-h);display:flex;align-items:center;justify-content:center;padding:7px 9px;border:1px solid transparent;border-radius:18px;background:rgba(10,9,14,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:border-color .3s ease,background .3s ease,box-shadow .3s ease,backdrop-filter .3s ease}
+    .nav.scrolled{border-color:var(--line);background:rgba(10,9,14,.64);box-shadow:0 12px 40px rgba(0,0,0,.18);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+    .nav-links{display:flex;gap:5px;align-items:center;justify-content:center}.nav-links a{padding:9px 13px;color:var(--muted);font-size:.9rem;border-radius:11px;transition:color .2s,background .2s,transform .2s}.nav-links a:hover{color:var(--text);background:rgba(155,108,255,.08);transform:translateY(-1px)}
+        .resume{background:var(--text);color:#111!important;font-weight:700;padding:9px 14px!important}.resume:hover{background:#fff!important;color:#111!important}
+
+    .ambient{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:-2}.orb{position:absolute;border-radius:50%;filter:blur(1px);opacity:.22;animation:float 12s ease-in-out infinite}.orb.one{width:300px;height:300px;background:radial-gradient(circle,var(--purple),transparent 68%);top:12%;right:-90px}.orb.two{width:240px;height:240px;background:radial-gradient(circle,#5d3bd0,transparent 68%);bottom:12%;left:-100px;animation-delay:-5s}.orb.three{width:140px;height:140px;background:radial-gradient(circle,#c7a7ff,transparent 68%);top:48%;right:14%;opacity:.1;animation-delay:-8s}
+    @keyframes float{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(25px,-35px,0) scale(1.08)}}
+
+    .hero{min-height:calc(100vh - 80px);display:grid;grid-template-columns:1.25fr .75fr;align-items:center;gap:70px;padding:90px 0 80px;position:relative;border-top:0!important}
+    .kicker{display:flex;align-items:center;gap:10px;color:var(--purple-2);font-size:.82rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}.kicker::before{content:"";width:28px;height:1px;background:var(--purple)}
+    h1{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(4rem,8vw,7.5rem);line-height:.84;letter-spacing:-.055em;margin:18px 0 28px;max-width:800px}h1 em{color:var(--purple-2);font-style:italic}.hero-copy{font-size:1.12rem;line-height:1.75;color:var(--muted);max-width:690px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+    .button{border:1px solid var(--line);padding:12px 17px;border-radius:12px;transition:.25s;display:inline-flex;align-items:center;gap:9px;position:relative;overflow:hidden}.button::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 25%,rgba(255,255,255,.15),transparent 75%);transform:translateX(-120%);transition:transform .55s}.button:hover::after{transform:translateX(120%)}.button.primary{background:var(--text);color:#0c0c10;border-color:transparent;font-weight:700}.button:hover{transform:translateY(-2px);border-color:rgba(180,145,255,.45)}
+    .hero-side{display:flex;justify-content:center}.profile{width:min(100%,390px);padding:14px;border:1px solid var(--line);border-radius:28px;background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.018));transform:rotate(2deg);box-shadow:0 35px 80px rgba(0,0,0,.4);transition:transform .5s ease,box-shadow .5s ease}.profile:hover{transform:rotate(0deg) translateY(-7px);box-shadow:0 45px 90px rgba(70,35,150,.25)}.profile-inner{transform:rotate(-2deg);transition:transform .5s ease}.profile:hover .profile-inner{transform:rotate(0deg)}
+    .face-slot{aspect-ratio:4/5;border-radius:20px;overflow:hidden;position:relative;background:linear-gradient(145deg,#24202e,#111116);border:1px solid rgba(255,255,255,.08)}.face-slot img{width:100%;height:100%;object-fit:cover;display:block}.face-note{position:absolute;left:14px;right:14px;bottom:14px;padding:10px 12px;border-radius:12px;background:rgba(5,5,8,.68);backdrop-filter:blur(8px);font-size:.78rem;color:#ddd8e8;border:1px solid rgba(255,255,255,.08)}.profile-meta{padding:17px 5px 5px}.profile-meta strong{font-size:1.15rem}.profile-meta p{color:var(--muted);font-size:.9rem;margin:6px 0 0}.scroll{position:absolute;bottom:28px;left:0;color:#6f6b77;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;animation:bob 2s ease-in-out infinite}@keyframes bob{50%{transform:translateY(5px)}}
+
+    .ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;background:rgba(155,108,255,.025)}.ticker-track{display:inline-flex;min-width:max-content;animation:marquee 25s linear infinite}.ticker span{display:inline-flex;align-items:center;gap:25px;padding:16px 25px;color:#9e96ad;font-size:.76rem;letter-spacing:.15em;text-transform:uppercase}.ticker i{width:5px;height:5px;border-radius:50%;background:var(--purple);display:inline-block;box-shadow:0 0 12px var(--purple)}@keyframes marquee{to{transform:translateX(-50%)}}
+
+    section{padding:105px 0;border-top:1px solid var(--line)}.section-head{display:grid;grid-template-columns:.45fr 1fr;gap:40px;margin-bottom:45px}.section-label{color:var(--purple-2);font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}h2{font-family:"Instrument Serif",serif;font-size:clamp(2.8rem,5vw,5rem);font-weight:400;line-height:.95;letter-spacing:-.04em;margin:0}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.about-card,.skill,.social-card{padding:27px;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.025);position:relative;overflow:hidden}.about-card::before,.skill::before,.social-card::before{content:"";position:absolute;width:170px;height:170px;border-radius:50%;background:radial-gradient(circle,rgba(155,108,255,.13),transparent 70%);top:-100px;right:-80px;transition:transform .4s}.about-card:hover::before,.skill:hover::before,.social-card:hover::before{transform:scale(1.5)}.about-card p{color:var(--muted);line-height:1.8;margin:0}
+    .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.skill{transition:.3s}.skill:hover{transform:translateY(-5px) rotateX(1deg);border-color:rgba(155,108,255,.38);background:rgba(155,108,255,.05);box-shadow:0 18px 45px rgba(0,0,0,.18)}.skill b{display:block;margin-bottom:7px}.skill span{color:var(--muted);font-size:.9rem}
+
+    .timeline{border-left:1px solid var(--line);margin-left:10px}.timeline-item{position:relative;padding:0 0 42px 34px}.timeline-item:last-child{padding-bottom:0}.timeline-item::before{content:"";position:absolute;left:-5px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--purple);box-shadow:0 0 0 6px var(--bg),0 0 18px rgba(155,108,255,.6)}.timeline-item small{color:var(--purple-2);font-weight:700}.timeline-item h3{font-family:"Instrument Serif",serif;font-size:2rem;font-weight:400;margin:8px 0}.timeline-item p{color:var(--muted);line-height:1.7;margin:0;max-width:760px}.timeline-item .result{display:inline-flex;margin-top:12px;padding:7px 10px;border:1px solid rgba(155,108,255,.25);border-radius:999px;background:rgba(155,108,255,.06);font-size:.78rem;color:var(--purple-2)}
+
+    .social-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.social-card{display:flex;align-items:center;gap:14px;min-height:92px;transition:.3s}.social-card:hover{transform:translateY(-4px);border-color:rgba(155,108,255,.38);background:rgba(155,108,255,.055)}.social-icon{width:38px;height:38px;display:grid;place-items:center;color:var(--purple-2);flex:0 0 auto}.social-icon svg{width:30px;height:30px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.social-icon .fill-logo{fill:currentColor;stroke:none}.social-card strong{display:block;font-size:.95rem}.social-card span{display:block;color:var(--muted);font-size:.8rem;margin-top:4px;word-break:break-word}
+
+    .contact{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px;align-items:start}.contact-copy p{color:var(--muted);line-height:1.8;max-width:470px}form{display:grid;grid-template-columns:1fr 1fr;gap:12px}input,textarea{width:100%;padding:14px 15px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.025);color:var(--text);outline:none;transition:.2s}textarea{grid-column:1/-1;min-height:150px;resize:vertical}input:focus,textarea:focus{border-color:rgba(176,140,255,.6);background:rgba(155,108,255,.035);box-shadow:0 0 0 4px rgba(155,108,255,.045)}form button{grid-column:2;justify-self:end;cursor:pointer}
+    footer{display:flex;justify-content:space-between;gap:20px;padding:30px 0 45px;color:#6f6b77;font-size:.85rem}.footer-links{display:flex;gap:18px}.footer-links a:hover{color:var(--text)}
+
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .72s ease,transform .72s cubic-bezier(.22,.75,.2,1);will-change:opacity,transform}.reveal.visible{opacity:1;transform:none}.tilt{transform-style:preserve-3d}
+    @media(max-width:850px){.nav{position:sticky}.nav-links{width:100%;justify-content:flex-end}.nav-links a:not(.resume){display:none}.hero{grid-template-columns:1fr;gap:45px;padding-top:70px}.hero-side{justify-content:flex-start}.profile{width:min(100%,330px)}.scroll{display:none}.section-head,.about-grid,.contact{grid-template-columns:1fr}.skills{grid-template-columns:1fr 1fr}.social-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:560px){.container{width:min(100% - 26px,var(--max))}.nav{top:8px;margin-top:8px}.nav-links{width:100%;margin-left:0;justify-content:flex-end}.nav-links .resume{margin-left:0}.nav-links a{padding:8px 10px}h1{font-size:clamp(3.5rem,20vw,5.5rem)}section{padding:75px 0}.skills,.social-grid,form{grid-template-columns:1fr}textarea,form button{grid-column:auto}form button{justify-self:stretch}.social-card{min-height:80px}footer{flex-direction:column}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ticker-track,.orb,.scroll{animation:none}.reveal{transition:none}}
+  </style>
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"><div class="orb one"></div><div class="orb two"></div><div class="orb three"></div></div>
+  <div class="container">
+    <nav class="nav" id="nav">
+      <div class="nav-links">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#socials">Socials</a><a href="#contact">Contact</a><a class="resume" href="#contact" id="resume">Resume ↗</a>
+      </div>
+    </nav>
+
+    <main>
+      <section class="hero">
+        <div class="reveal">
+          <div class="kicker">B.E. CSE (AI/ML) · Creator · Builder</div>
+          <h1>Ideas into <em>worlds.</em><br>Worlds into things.</h1>
+          <p class="hero-copy">I’m Enoch — a computer science student who likes building unusual things: stories, mathematical systems, interfaces, programming experiments and digital worlds. I’m especially interested in AI/ML, creative technology, archaeology, history and storytelling.</p>
+          <div class="hero-actions"><a class="button primary" href="#about">Explore my world ↓</a><a class="button" href="#socials">Find me online →</a></div>
+        </div>
+        <div class="hero-side reveal">
+          <div class="profile tilt" data-tilt>
+            <div class="profile-inner">
+              <div class="face-slot">
+                <!-- Replace assets/profile-placeholder.svg with your own photo, e.g. assets/face.jpg -->
+                <img src="assets/profile-pic.JPG" alt="Enoch K" style="width:100%;height:100%;object-fit:cover;object-position:center 8%;">
+              </div>
+              <div class="profile-meta"><strong>Enoch K</strong><p>B.E. CSE (AI/ML) · Storyteller · Builder</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="scroll">Scroll to explore ↓</div>
+      </section>
+
+      <div class="ticker" aria-label="Areas of interest"><div class="ticker-track"><span>AI / ML <i></i></span><span>Creative Technology <i></i></span><span>Storytelling <i></i></span><span>Music <i></i></span><span>History <i></i></span><span>Archaeology <i></i></span><span>AI / ML <i></i></span><span>Creative Technology <i></i></span><span>Storytelling <i></i></span><span>Music <i></i></span><span>History <i></i></span><span>Archaeology <i></i></span></div></div>
+
+      <section id="about">
+        <div class="section-head reveal"><div class="section-label">01 / About</div><h2>A portfolio for the things I’m curious about.</h2></div>
+        <div class="about-grid"><div class="about-card reveal"><p>I enjoy taking an idea and turning it into something tangible. Sometimes that means writing a fictional universe; sometimes it means inventing a mathematical method, designing a website, or experimenting with code. I like projects that sit somewhere between technology and creativity.</p></div><div class="about-card reveal"><p>My main technical path is computer science with a focus on AI/ML, while archaeology and history remain major intellectual interests. Music and fiction writing are core creative outlets, especially composition, orchestration, worldbuilding and cinematic storytelling.</p></div></div>
+      </section>
+
+      <section id="skills">
+        <div class="section-head reveal"><div class="section-label">02 / What I do</div><h2>Build. Write. Experiment.</h2></div>
+        <div class="skills">
+          <div class="skill reveal"><b>AI & Programming</b><span>Python · AI/ML · Programming experiments</span></div><div class="skill reveal"><b>Web Development</b><span>HTML · CSS · JavaScript · Interactive prototypes</span></div><div class="skill reveal"><b>Storytelling</b><span>Worldbuilding · Sci-fi · Long-form fiction</span></div><div class="skill reveal"><b>Mathematics</b><span>Number systems · Mental math · Puzzle design</span></div><div class="skill reveal"><b>Music</b><span>Keyboard · Composition · Orchestration · Production</span></div><div class="skill reveal"><b>History & Archaeology</b><span>Ancient history · Biblical history · Archaeological research</span></div>
+        </div>
+      </section>
+
+      <section id="education">
+        <div class="section-head reveal"><div class="section-label">03 / Education</div><h2>Where I’ve been — and where I’m going.</h2></div>
+        <div class="timeline">
+          <div class="timeline-item reveal"><small>CURRENT · UNDERGRADUATE</small><h3>B.E. Computer Science & Engineering (AI/ML)</h3><p>East Point College of Engineering. Currently pursuing an undergraduate engineering degree with a focus on Computer Science and Artificial Intelligence / Machine Learning.</p></div>
+          <div class="timeline-item reveal"><small>PRE-UNIVERSITY · GRADES 11–12</small><h3>Pre-University Education</h3><p>CMR National PU College, ITPL.</p><span class="result">12th Grade · 91.5%</span></div>
+          <div class="timeline-item reveal"><small>SECONDARY EDUCATION · GRADES 6–10</small><h3>Secondary School</h3><p>Kids Global High School — completed Grades 6 through 10.</p><span class="result">10th Grade · 87.2%</span></div>
+          <div class="timeline-item reveal"><small>PRIMARY EDUCATION · GRADES 1–5</small><h3>Primary School</h3><p>Kids Global High School — completed Grades 1 through 5.</p></div>
+          <div class="timeline-item reveal"><small>EARLY CHILDHOOD EDUCATION · LKG–UKG</small><h3>Early Childhood Education</h3><p>Kids Global High School — completed LKG and UKG.</p></div>
+        </div>
+      </section>
+
+      <section id="socials">
+        <div class="section-head reveal"><div class="section-label">04 / Find me</div><h2>Elsewhere on the internet.</h2></div>
+        <div class="social-grid">
+          <a class="social-card reveal" href="https://www.linkedin.com/in/enochkgm/" target="_blank" rel="noopener" aria-label="Enoch on LinkedIn"><span class="social-icon"><svg class="fill-logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.66H9.35V8.99h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.3ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM3.56 20.45h3.56V8.99H3.56v11.46Z"/></svg></span><span><strong>LinkedIn</strong><span>Professional profile</span></span></a>
+          <a class="social-card reveal" href="mailto:enochkgm@gmail.com"><span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 6.5 12 13l8.5-6.5v11A1.5 1.5 0 0 1 19 19H5a1.5 1.5 0 0 1-1.5-1.5v-11Z"/><path d="M3.5 6.5A1.5 1.5 0 0 1 5 5h14a1.5 1.5 0 0 1 1.5 1.5"/></svg></span><span><strong>Gmail</strong><span>enochkgm@gmail.com</span></span></a>
+          <a class="social-card reveal" href="tel:+919972880283"><span class="social-icon"><svg viewBox="0 0 24 24"><path d="M7 3h3l1.5 4-2 1.5a15 15 0 0 0 6 6l1.5-2 4 1.5v3c0 1-1 2-2 2C10 19 5 14 5 5c0-1 1-2 2-2Z"/></svg></span><span><strong>Mobile</strong><span>+91 9972880283</span></span></a>
+          <a class="social-card reveal" href="https://www.youtube.com/@EnochKGMB" target="_blank" rel="noopener" aria-label="Enoch on YouTube"><span class="social-icon"><svg class="fill-logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.19a3 3 0 0 0-2.11-2.12C19.53 3.5 12 3.5 12 3.5s-7.53 0-9.39.57A3 3 0 0 0 .5 6.19 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.81 3 3 0 0 0 2.11 2.12c1.86.57 9.39.57 9.39.57s7.53 0 9.39-.57a3 3 0 0 0 2.11-2.12A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.81ZM9.6 15.5v-7l6 3.5-6 3.5Z"/></svg></span><span><strong>YouTube</strong><span>@EnochKGMB</span></span></a>
+          <a class="social-card reveal" href="https://github.com/EnochKGM" target="_blank" rel="noopener" aria-label="Enoch on GitHub"><span class="social-icon"><svg class="fill-logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.14c-3.2.7-3.88-1.54-3.88-1.54-.53-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.67 1.25 3.32.96.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.47.11-3.06 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.77.11 3.06.73.81 1.18 1.84 1.18 3.1 0 4.42-2.7 5.39-5.27 5.68.41.35.78 1.05.78 2.12v3.14c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></span><span><strong>GitHub</strong><span>EnochKGM</span></span></a>
+          <a class="social-card reveal" href="https://www.chess.com/member/enchkgmb" target="_blank" rel="noopener" aria-label="Enoch on Chess.com"><span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 21h10M9 18h6l1-3-2-2.2c1.3-1 2-2.3 2-3.8 0-3.1-1.8-5-4-5s-4 1.9-4 5c0 1.5.7 2.8 2 3.8L8 15l1 3Zm3-14V2m-2 1h4"/></svg></span><span><strong>Chess.com</strong><span>enchkgmb</span></span></a>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="contact"><div class="contact-copy reveal"><div class="section-label">05 / Contact</div><h2>Let’s make something interesting.</h2><p>Have an idea, collaboration, question or just something interesting to talk about? Send me a message.</p></div><form class="reveal" onsubmit="event.preventDefault(); alert('Demo form — connect this to your preferred backend before publishing.');"><input aria-label="Name" placeholder="Your name" required><input aria-label="Email" placeholder="Your email" type="email" required><textarea aria-label="Message" placeholder="Tell me what you're thinking..." required></textarea><button class="button primary" type="submit">Send message ↗</button></form></div>
+      </section>
+    </main>
+
+    <footer><div>© <span id="year"></span> Enoch K. Built with curiosity.</div><div class="footer-links"><a href="https://github.com/EnochKGM" target="_blank" rel="noopener">GitHub</a><a href="#socials">Socials</a><a href="#contact">Contact</a></div></footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const nav = document.getElementById('nav');
+    const syncNav = () => nav.classList.toggle('scrolled', window.scrollY > 8);
+    syncNav(); window.addEventListener('scroll', syncNav, {passive:true});
+
+    // Reveal each piece only the first time its section enters the viewport.
+    // Once revealed, it stays static for the rest of this page session.
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: .14, rootMargin: '0px 0px -6% 0px' });
+
+    document.querySelectorAll('section').forEach(section => {
+      section.querySelectorAll('.reveal').forEach((el, index) => {
+        // Stagger only within this section, so unrelated content never feels delayed.
+        el.style.transitionDelay = `${Math.min(index * 85, 340)}ms`;
+        revealObserver.observe(el);
+      });
+    });
+
+    // Subtle cursor-reactive lighting.
+    window.addEventListener('pointermove', e => { document.body.style.setProperty('--mx', `${e.clientX}px`); document.body.style.setProperty('--my', `${e.clientY}px`); }, {passive:true});
+
+    // Small 3D tilt on the profile card for a more reactive/glassy feel.
+    const tilt = document.querySelector('[data-tilt]');
+    if (tilt && window.matchMedia('(pointer:fine)').matches) {
+      tilt.addEventListener('pointermove', e => { const r=tilt.getBoundingClientRect(); const x=(e.clientX-r.left)/r.width-.5; const y=(e.clientY-r.top)/r.height-.5; tilt.style.transform=`rotateX(${-y*5}deg) rotateY(${x*6}deg) rotateZ(1deg) translateY(-4px)`; });
+      tilt.addEventListener('pointerleave', () => { tilt.style.transform='rotate(2deg)'; });
+    }
+
+    document.getElementById('resume').addEventListener('click', e => { e.preventDefault(); alert('Add your resume PDF as assets/resume.pdf and change the Resume link in index.html.'); });
+
+    // Navbar navigation physically scrolls to the section. The reveal observer
+    // animates only the first arrival; subsequent visits remain static.
+    document.querySelectorAll('.nav a[href^="#"]').forEach(link => {
+      link.addEventListener('click', event => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (!target) return;
+        event.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+</body>
+</html>
