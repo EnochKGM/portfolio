@@ -168,8 +168,6 @@
       tilt.addEventListener('pointerleave', () => { tilt.style.transform='rotate(2deg)'; });
     }
 
-    document.getElementById('resume').addEventListener('click', e => { e.preventDefault(); alert('Add your resume PDF as assets/resume.pdf and change the Resume link in index.html.'); });
-
     // Navbar navigation physically scrolls to the section. The reveal observer
     // animates only the first arrival; subsequent visits remain static.
     document.querySelectorAll('.nav a[href^="#"]').forEach(link => {
